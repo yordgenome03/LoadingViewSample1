@@ -117,15 +117,15 @@ struct LoadingView<T: Shape>: View {
     
     private func shadowRadius(_ value: CGFloat, isOpposite: Bool = false) -> CGFloat {
         let shadowRadiusRatio = isOpposite
-        ? 1.0 - (pointScale - 1.0)
-        : pointScale - 1.0
+        ? baseScale - (pointScale - baseScale)
+        : pointScale - baseScale
         return value * shadowRadiusRatio
     }
     
     private func shadowOffset(_ value: CGFloat, isOpposite: Bool = false) -> CGFloat {
         let shadowOffsetRatio = isOpposite
-        ? -(1.0 - (pointScale - 1.0))
-        : pointScale - 1.0
+        ? -(baseScale - (pointScale - baseScale))
+        : pointScale - baseScale
         return value * shadowOffsetRatio
     }
     
