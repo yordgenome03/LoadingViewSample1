@@ -133,7 +133,8 @@ struct LoadingView<T: Shape>: View {
     private func ChildView(index: Int, isOpposite: Bool = false) -> some View {
         ZStack {
             objectShape
-                .fill(colors[index % colors.count])
+                .fill()
+                .foregroundStyle(colors[index % colors.count].gradient)
                 .frame(width: pointSize, height: pointSize)
                 .scaleEffect(pointScale)
                 .offset(grandChildOffset(index: index))
@@ -158,6 +159,5 @@ struct LoadingView<T: Shape>: View {
 
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        LoadingView()
-    }
+        LoadingView(objectShape: Squircle(), pointScale: 1.5,addOppositeAnimation: true, addBackground: true, shadowOpacity: 0.9, shadowRadius: 10)    }
 }
