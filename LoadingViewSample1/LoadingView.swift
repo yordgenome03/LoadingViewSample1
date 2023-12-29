@@ -72,14 +72,7 @@ struct LoadingView<T: Shape>: View {
             }
             
             ZStack {
-                // 親円
-                Circle()
-                    .stroke(lineWidth: 1)
-                    .frame(width: size, height: size)
-                    .opacity(0)
-                
                 ForEach(0..<numberOfPoints, id: \.self) { index in
-                    // 子円
                     ChildView(index: index)
                         .rotationEffect(.degrees(rotateAngle))
                         .position(childPosition(index: index))
@@ -91,7 +84,6 @@ struct LoadingView<T: Shape>: View {
                 
                 if addOppositeAnimation {
                     ForEach(0..<numberOfPoints, id: \.self) { index in
-                        // 子円
                         ChildView(index: index, isOpposite: true)
                             .rotationEffect(.degrees(-rotateAngle + 180))
                             .position(childPosition(index: index))
@@ -140,11 +132,6 @@ struct LoadingView<T: Shape>: View {
     @ViewBuilder
     private func ChildView(index: Int, isOpposite: Bool = false) -> some View {
         ZStack {
-            Circle()
-                .stroke(lineWidth: 2)
-                .frame(width: size, height: size)
-                .opacity(0)
-            // 孫円
             objectShape
                 .fill(colors[index % colors.count])
                 .frame(width: pointSize, height: pointSize)
