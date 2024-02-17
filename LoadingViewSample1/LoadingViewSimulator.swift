@@ -7,289 +7,231 @@
 
 import SwiftUI
 
-enum ShapeType: String, CaseIterable {
-    case circle = "Circle",
-         rectangle = "Rectangle",
-         squircle = "Squircle"
-}
-
-extension ColorScheme: CaseIterable {
-    var value: String {
-        switch self {
-        case .dark:
-            return "dark"
-        case .light:
-            return "light"
-        @unknown default:
-            return "unknown"
-        }
-    }
-}
-
 struct LoadingViewSimulator: View {
-    private let sliderWidth: CGFloat = 120
-    @State private var animationDuration: CGFloat = 2.0
-    @State private var selectedColorScheme: ColorScheme = .light
-    @State private var selectedShape: ShapeType = .circle
+    enum ShapeType: String, CaseIterable {
+        case circle = "Circle",
+             rectangle = "Rectangle",
+             squircle = "Squircle"
+    }
+    
+    @State private var colorScheme: ColorScheme = .light
+    @State private var objectShape: ShapeType = .circle
     @State private var frameSize: CGFloat = 300
+    @State private var animationDuration: CGFloat = 2.0
     @State private var numberOfPoints: Int = 5
-    @State private var pointScale: CGFloat = 1.0
     @State private var addOppositeAnimation: Bool = true
-    @State private var addBackground: Bool = false
     @State private var backgroundOpacity: CGFloat = 0.3
-    @State private var shadowOpacity: CGFloat = 0.5
     @State private var shadowRadius: CGFloat = 20
     @State private var shadowOffset: CGFloat = 20
+    @State private var shadowOpacity: CGFloat = 0.5
+    @State private var addBackground: Bool = false
+    @State private var pointScaleRatio: CGFloat = 1.0
+    
+    private let maxFrameHeight: CGFloat = 350
+    private let rowTextWidth: CGFloat = 200
     
     var body: some View {
         VStack {
-            
-            switch selectedShape {
-            case .circle:
-                LoadingView(objectShape: Circle(), frameSize: frameSize,
+            ZStack {
+                switch objectShape {
+                case .circle:
+                    Step8_3(objectShape: Circle(),
+                            frameSize: frameSize,
                             animationDuration: animationDuration,
-                            numberOfPoints: Int(numberOfPoints),
-                            pointScale: pointScale,
+                            numberOfPoints: numberOfPoints,
+                            pointScaleRatio: pointScaleRatio,
                             addOppositeAnimation: addOppositeAnimation,
-                            addBackground: addBackground,
-                            backgroundOpacity: backgroundOpacity.native,
-                            shadowOpacity: shadowOpacity,
                             shadowRadius: shadowRadius,
-                            shadowOffset: shadowOffset
-                )
-                .id(UUID())
-                .frame(maxHeight: .infinity)
-                
-            case .rectangle:
-                LoadingView(objectShape: Rectangle(), frameSize: frameSize,
+                            shadowOffset: shadowOffset,
+                            shadowOpacity: shadowOpacity,
+                            backgroundOpacity: backgroundOpacity,
+                            addBackground: addBackground)
+                case .rectangle:
+                    Step8_3(objectShape: Rectangle(),
+                            frameSize: frameSize,
                             animationDuration: animationDuration,
-                            numberOfPoints: Int(numberOfPoints),
-                            pointScale: pointScale,
+                            numberOfPoints: numberOfPoints,
+                            pointScaleRatio: pointScaleRatio,
                             addOppositeAnimation: addOppositeAnimation,
-                            addBackground: addBackground,
-                            backgroundOpacity: backgroundOpacity.native,
-                            shadowOpacity: shadowOpacity,
                             shadowRadius: shadowRadius,
-                            shadowOffset: shadowOffset
-                )
-                .id(UUID())
-                .frame(maxHeight: .infinity)
-                
-            case .squircle:
-                LoadingView(objectShape: Squircle(), frameSize: frameSize,
+                            shadowOffset: shadowOffset,
+                            shadowOpacity: shadowOpacity,
+                            backgroundOpacity: backgroundOpacity,
+                            addBackground: addBackground)
+                case .squircle:
+                    Step8_3(objectShape: Squircle(),
+                            frameSize: frameSize,
                             animationDuration: animationDuration,
-                            numberOfPoints: Int(numberOfPoints),
-                            pointScale: pointScale,
+                            numberOfPoints: numberOfPoints,
+                            pointScaleRatio: pointScaleRatio,
                             addOppositeAnimation: addOppositeAnimation,
-                            addBackground: addBackground,
-                            backgroundOpacity: backgroundOpacity.native,
-                            shadowOpacity: shadowOpacity,
                             shadowRadius: shadowRadius,
-                            shadowOffset: shadowOffset
-                )
-                .id(UUID())
-                .frame(maxHeight: .infinity)
+                            shadowOffset: shadowOffset,
+                            shadowOpacity: shadowOpacity,
+                            backgroundOpacity: backgroundOpacity,
+                            addBackground: addBackground)
+                }
             }
+            .id(UUID())
+            .frame(height: maxFrameHeight)
             
             ScrollView(showsIndicators: false) {
                 VStack {
-                    HStack {
-                        Text("colorScheme")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Picker("", selection: $selectedColorScheme) {
-                            ForEach(ColorScheme.allCases, id: \.self) { sheme in
-                                Text(sheme.value)
-                            }
-                        }
-                        .frame(width: sliderWidth, alignment: .trailing)
-                    }
-                    .padding(.horizontal, 10)
+                    SegmentedPickerRow(title: "colorScheme", selection: $colorScheme, selectionList: ColorScheme.allCases)
                     
                     Divider()
                     
-                    HStack {
-                        Text("objectShape")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Picker("", selection: $selectedShape) {
-                            ForEach(ShapeType.allCases, id: \.self) { type in
-                                Text(type.rawValue)
-                            }
-                        }
-                        .frame(width: sliderWidth, alignment: .trailing)
-                    }
-                    .padding(.horizontal, 10)
-                    
-                    Divider()
-
-                    HStack {
-                        HStack {
-                            Text("animationDuration:")
-                            Text("\(animationDuration, specifier: "%.1f")").fontWeight(.bold)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                        Slider(value: $animationDuration, in: 0...5, step: 0.1)
-                            .frame(width: sliderWidth, alignment: .trailing)
-                    }
-                    .padding(.horizontal, 10)
+                    SegmentedPickerRow(title: "objectShape", selection: $objectShape)
                     
                     Divider()
                     
-                    HStack {
-                        HStack {
-                            Text("frameSize:")
-                            Text("\(frameSize, specifier: "%.0f")").fontWeight(.bold)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                        Slider(value: $frameSize, in: 100...400, step: 0.5)
-                            .frame(width: sliderWidth, alignment: .trailing)
-
-                    }
-                    .padding(.horizontal, 10)
+                    ToggleRow(title: "addOppositeAnimation", isOn: $addOppositeAnimation)
                     
                     Divider()
                     
-                    HStack {
-                        HStack {
-                        Text("numberOfPoints:")
-                        Text("\(numberOfPoints)").fontWeight(.bold)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                        Stepper(value: $numberOfPoints, in: 0...10, step: 1) {
-                        }
-                        .frame(width: sliderWidth, alignment: .trailing)
-                    }
-                    .padding(.horizontal, 10)
+                    ToggleRow(title: "addBackground", isOn: $addBackground)
                     
                     Divider()
+                    
+                    VStack {
+                        SliderRow(title: "frameSize", value: $frameSize, in: 50...maxFrameHeight, step: 1)
+                        
+                        Divider()
+                        
+                        SliderRow(title: "animationDuration", value: $animationDuration, in: 0...10, step: 0.1)
+                        
+                        Divider()
+                        
+                        SliderRow(title: "backgroundOpacity", value: $backgroundOpacity, in: 0...1, step: 0.1)
+                        
+                        Divider()
+                        
+                        SliderRow(title: "pointScaleRatio", value: $pointScaleRatio, in: 0...3, step: 0.1)
+                        
+                        Divider()
+                        
+                        SliderRow(title: "shadowRadius", value: $shadowRadius, in: 0...30, step: 0.5)
+                        
+                        Divider()
+                        
+                        SliderRow(title: "shadowOffset", value: $shadowOffset, in: 0...30, step: 0.5)
+                        
+                        Divider()
+                        
+                        SliderRow(title: "shadowOpacity", value: $shadowOpacity, in: 0...1, step: 0.1)
+                        
+                        Divider()
+                    }
+                    
+                    StepperRow(title: "numberOfPoints", value: $numberOfPoints, in: 1...10)
                 }
-                .padding(.horizontal, 20)
-                
-
-                VStack {
-                    HStack {
-                        HStack {
-                            Text("pointScale:")
-                            Text("\(pointScale, specifier: "%.1f")").fontWeight(.bold)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                        Slider(value: $pointScale, in: 0...3, step: 0.1)
-                            .frame(width: sliderWidth, alignment: .trailing)
-                    }
-                    .padding(.horizontal, 10)
-                    
-                    Divider()
-                    
-                    HStack {
-                        HStack {
-                        Text("addOppositeAnimation:")
-                        Text("\(addOppositeAnimation ? "true" : "false")").fontWeight(.bold)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                        Toggle(isOn: $addOppositeAnimation) {
-                            
-                        }
-                        .frame(width: sliderWidth, alignment: .trailing)
-                    }
-                    .padding(.horizontal, 10)
-
-                    Divider()
-                    
-
-                }
-                .padding(.horizontal, 20)
-                
-                VStack {
-                    HStack {
-                        HStack {
-                        Text("addBackground:")
-                        Text("\(addBackground ? "true" : "false")").fontWeight(.bold)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                        Toggle(isOn: $addBackground) {
-                            
-                        }
-                        .frame(width: sliderWidth, alignment: .trailing)
-                    }
-                    .padding(.horizontal, 10)
-                    
-                    Divider()
-                    
-                    HStack {
-                        HStack {
-                        Text("backgroundOpacity:")
-                        Text("\(backgroundOpacity, specifier: "%.1f")").fontWeight(.bold)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                        Slider(value: $backgroundOpacity, in: 0...1, step: 0.1)
-                            .frame(width: sliderWidth, alignment: .trailing)
-                    }
-                    .padding(.horizontal, 10)
-                    
-                    Divider()
-                    
-                    HStack {
-                        HStack {
-                            Text("shadowOpacity:")
-                            Text("\(shadowOpacity, specifier: "%.1f")").fontWeight(.bold)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                        Slider(value: $shadowOpacity, in: 0...1, step: 0.1)
-                            .frame(width: sliderWidth, alignment: .trailing)
-                    }
-                    .padding(.horizontal, 10)
-                    
-                    Divider()
-                    
-                    HStack {
-                        HStack {
-                            Text("shadowRadius:")
-                            Text("\(shadowRadius, specifier: "%.1f")").fontWeight(.bold)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                        Slider(value: $shadowRadius, in: 0...50, step: 0.5)
-                            .frame(width: sliderWidth, alignment: .trailing)
-                    }
-                    .padding(.horizontal, 10)
-                    
-                    Divider()
-                    
-                    HStack {
-                        HStack {
-                        Text("shadowOffset:")
-                        Text("\(shadowOffset, specifier: "%.1f")").fontWeight(.bold)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                        Slider(value: $shadowOffset, in: 0...50, step: 0.5)
-                            .frame(width: sliderWidth, alignment: .trailing)
-                    }
-                    .padding(.horizontal, 10)
-
-                    Divider()
-                }
-                .padding(.horizontal, 20)
-
+                .padding(.vertical, 20)
             }
-            .frame(maxHeight: .infinity)
+            .padding(.horizontal, 20)
+            .background(Color.gray.opacity(0.2))
         }
-        .preferredColorScheme(selectedColorScheme)
+        .frame(maxHeight: .infinity, alignment: .top)
+        .preferredColorScheme(colorScheme)
     }
+    
+    func ToggleRow(title: String, isOn: Binding<Bool>) -> some View {
+        HStack {
+            Text(title)
+                .font(.callout)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(width: rowTextWidth)
+            
+            Toggle(isOn: isOn) {}
+        }
+    }
+    
+    func SliderRow(title: String, value: Binding<CGFloat>, in range: ClosedRange<CGFloat>, step: CGFloat = 1) -> some View {
+        HStack {
+            HStack {
+                Text(title)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                
+                Text("\(value.wrappedValue, specifier: "%.1f")")
+                    .bold()
+            }
+            .font(.callout)
+            .frame(width: rowTextWidth)
+            
+            Slider(value: value,
+                   in: Double(range.lowerBound)...Double(range.upperBound),
+                   step: Double(step))
+            .padding(.horizontal)
+        }
+    }
+    
+    func StepperRow(title: String, value: Binding<Int>, in range: ClosedRange<Int>, step: Int = 1) -> some View {
+        HStack {
+            HStack {
+                Text(title)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Text(String(describing: value.wrappedValue))
+                    .bold()
+            }
+            .font(.callout)
+            .frame(width: rowTextWidth)
+            
+            Stepper("", value: value,
+                    in: range.lowerBound...range.upperBound,
+                    step: step)
+            .padding(.horizontal)
+        }
+    }
+    
+    func SegmentedPickerRow<T: Hashable>(title: String, selection: Binding<T>, selectionList: [T]) -> some View {
+        HStack {
+            Text(title)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(width: rowTextWidth)
+            
+            Picker("", selection: selection) {
+                ForEach(selectionList, id: \.self) { row in
+                    Text("\(String(describing: row))")
+                        .tag(row)
+                }
+            }
+            .font(.callout)
+            .pickerStyle(SegmentedPickerStyle())
+        }
+    }
+    
+    func SegmentedPickerRow(title: String, selection: Binding<ShapeType>) -> some View {
+        HStack {
+            Text(title)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(width: rowTextWidth)
+            
+            Picker("", selection: selection) {
+                ForEach(ShapeType.allCases, id: \.self) { shapeType in
+                    switch shapeType {
+                    case .circle:
+                        Circle()
+                            .fill(.black)
+                            .tag(shapeType)
+                    case .rectangle:
+                        Rectangle()
+                            .fill(.black)
+                            .tag(shapeType)
+                    case .squircle:
+                        Squircle()
+                            .fill(.black)
+                            .tag(shapeType)
+                    }
+                }
+            }
+            .font(.callout)
+            .pickerStyle(SegmentedPickerStyle())
+        }
+    }
+
 }
 
-struct LoadingViewSampleView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoadingViewSimulator()
-    }
+#Preview {
+    LoadingViewSimulator()
 }
-
-
-

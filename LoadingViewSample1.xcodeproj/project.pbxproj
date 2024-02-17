@@ -7,28 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A11C8FDC2B7A9289005D34D5 /* Step4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C8FDB2B7A9288005D34D5 /* Step4.swift */; };
 		A17435CE2B3A936A001234CC /* LoadingViewSample1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17435CD2B3A936A001234CC /* LoadingViewSample1App.swift */; };
 		A17435D22B3A936B001234CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A17435D12B3A936B001234CC /* Assets.xcassets */; };
 		A17435D52B3A936B001234CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A17435D42B3A936B001234CC /* Preview Assets.xcassets */; };
 		A17435DC2B3A93CD001234CC /* Squircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17435DB2B3A93CD001234CC /* Squircle.swift */; };
-		A17435DE2B3A9430001234CC /* LoadingView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17435DD2B3A9430001234CC /* LoadingView1.swift */; };
-		A17435E02B3AB8E0001234CC /* LoadingView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17435DF2B3AB8E0001234CC /* LoadingView2.swift */; };
-		A17435E22B3B1590001234CC /* LoadingView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17435E12B3B1590001234CC /* LoadingView3.swift */; };
-		A1B2DD212B3D3844003BA1F7 /* LoadingView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2DD202B3D3844003BA1F7 /* LoadingView4.swift */; };
+		A17435DE2B3A9430001234CC /* Step1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17435DD2B3A9430001234CC /* Step1.swift */; };
+		A17435E02B3AB8E0001234CC /* Step2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17435DF2B3AB8E0001234CC /* Step2.swift */; };
+		A17435E22B3B1590001234CC /* Step3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17435E12B3B1590001234CC /* Step3.swift */; };
+		A1A878DF2B7BFE9400DF598B /* Step6.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A878DE2B7BFE9400DF598B /* Step6.swift */; };
+		A1A878E12B7C06DE00DF598B /* Step7.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A878E02B7C06DD00DF598B /* Step7.swift */; };
+		A1A878E32B7D8B7600DF598B /* Step8.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A878E22B7D8B7600DF598B /* Step8.swift */; };
+		A1B2DD212B3D3844003BA1F7 /* Step5.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2DD202B3D3844003BA1F7 /* Step5.swift */; };
 		A1B2DD232B3D821E003BA1F7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2DD222B3D821E003BA1F7 /* LoadingView.swift */; };
 		A1B2DD252B3E5081003BA1F7 /* LoadingViewSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2DD242B3E5081003BA1F7 /* LoadingViewSimulator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A11C8FDB2B7A9288005D34D5 /* Step4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step4.swift; sourceTree = "<group>"; };
 		A17435CA2B3A936A001234CC /* LoadingViewSample1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoadingViewSample1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17435CD2B3A936A001234CC /* LoadingViewSample1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewSample1App.swift; sourceTree = "<group>"; };
 		A17435D12B3A936B001234CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A17435D42B3A936B001234CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A17435DB2B3A93CD001234CC /* Squircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squircle.swift; sourceTree = "<group>"; };
-		A17435DD2B3A9430001234CC /* LoadingView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView1.swift; sourceTree = "<group>"; };
-		A17435DF2B3AB8E0001234CC /* LoadingView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView2.swift; sourceTree = "<group>"; };
-		A17435E12B3B1590001234CC /* LoadingView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView3.swift; sourceTree = "<group>"; };
-		A1B2DD202B3D3844003BA1F7 /* LoadingView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView4.swift; sourceTree = "<group>"; };
+		A17435DD2B3A9430001234CC /* Step1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step1.swift; sourceTree = "<group>"; };
+		A17435DF2B3AB8E0001234CC /* Step2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step2.swift; sourceTree = "<group>"; };
+		A17435E12B3B1590001234CC /* Step3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step3.swift; sourceTree = "<group>"; };
+		A1A878DE2B7BFE9400DF598B /* Step6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step6.swift; sourceTree = "<group>"; };
+		A1A878E02B7C06DD00DF598B /* Step7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step7.swift; sourceTree = "<group>"; };
+		A1A878E22B7D8B7600DF598B /* Step8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step8.swift; sourceTree = "<group>"; };
+		A1B2DD202B3D3844003BA1F7 /* Step5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step5.swift; sourceTree = "<group>"; };
 		A1B2DD222B3D821E003BA1F7 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		A1B2DD242B3E5081003BA1F7 /* LoadingViewSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewSimulator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,11 +71,11 @@
 		A17435CC2B3A936A001234CC /* LoadingViewSample1 */ = {
 			isa = PBXGroup;
 			children = (
-				A1B2DD262B3EB672003BA1F7 /* Steps */,
 				A17435CD2B3A936A001234CC /* LoadingViewSample1App.swift */,
 				A1B2DD222B3D821E003BA1F7 /* LoadingView.swift */,
 				A1B2DD242B3E5081003BA1F7 /* LoadingViewSimulator.swift */,
 				A17435DB2B3A93CD001234CC /* Squircle.swift */,
+				A1B2DD262B3EB672003BA1F7 /* Steps */,
 				A17435D12B3A936B001234CC /* Assets.xcassets */,
 				A17435D32B3A936B001234CC /* Preview Content */,
 			);
@@ -85,10 +93,14 @@
 		A1B2DD262B3EB672003BA1F7 /* Steps */ = {
 			isa = PBXGroup;
 			children = (
-				A17435DD2B3A9430001234CC /* LoadingView1.swift */,
-				A17435DF2B3AB8E0001234CC /* LoadingView2.swift */,
-				A17435E12B3B1590001234CC /* LoadingView3.swift */,
-				A1B2DD202B3D3844003BA1F7 /* LoadingView4.swift */,
+				A17435DD2B3A9430001234CC /* Step1.swift */,
+				A17435DF2B3AB8E0001234CC /* Step2.swift */,
+				A17435E12B3B1590001234CC /* Step3.swift */,
+				A11C8FDB2B7A9288005D34D5 /* Step4.swift */,
+				A1B2DD202B3D3844003BA1F7 /* Step5.swift */,
+				A1A878DE2B7BFE9400DF598B /* Step6.swift */,
+				A1A878E02B7C06DD00DF598B /* Step7.swift */,
+				A1A878E22B7D8B7600DF598B /* Step8.swift */,
 			);
 			path = Steps;
 			sourceTree = "<group>";
@@ -163,14 +175,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A17435DE2B3A9430001234CC /* LoadingView1.swift in Sources */,
-				A1B2DD212B3D3844003BA1F7 /* LoadingView4.swift in Sources */,
+				A17435DE2B3A9430001234CC /* Step1.swift in Sources */,
+				A1B2DD212B3D3844003BA1F7 /* Step5.swift in Sources */,
 				A1B2DD232B3D821E003BA1F7 /* LoadingView.swift in Sources */,
-				A17435E02B3AB8E0001234CC /* LoadingView2.swift in Sources */,
+				A1A878E12B7C06DE00DF598B /* Step7.swift in Sources */,
+				A1A878DF2B7BFE9400DF598B /* Step6.swift in Sources */,
+				A17435E02B3AB8E0001234CC /* Step2.swift in Sources */,
+				A11C8FDC2B7A9289005D34D5 /* Step4.swift in Sources */,
 				A1B2DD252B3E5081003BA1F7 /* LoadingViewSimulator.swift in Sources */,
 				A17435DC2B3A93CD001234CC /* Squircle.swift in Sources */,
+				A1A878E32B7D8B7600DF598B /* Step8.swift in Sources */,
 				A17435CE2B3A936A001234CC /* LoadingViewSample1App.swift in Sources */,
-				A17435E22B3B1590001234CC /* LoadingView3.swift in Sources */,
+				A17435E22B3B1590001234CC /* Step3.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -46,10 +46,8 @@ struct Squircle: Shape {
     }
 }
 
-struct SquircleSample_Previews: PreviewProvider {
-    static var previews: some View {
-        Squircle()
-            .fill(Color.blue.gradient)
-            .frame(width: 100, height: 100)
-    }
+#Preview {
+    Squircle()
+        .fill(Color.blue.gradient)
+        .frame(width: 100, height: 100)
 }
