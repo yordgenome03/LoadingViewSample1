@@ -81,7 +81,7 @@ struct LoadingViewSimulator: View {
                     
                     Divider()
                     
-                    SegmentedPickerRow(title: "objectShape", selection: $objectShape)
+                    SegmentedPickerRow(title: "objectShape", selection: $objectShape, selectionList: ShapeType.allCases)
                     
                     Divider()
                     
@@ -200,36 +200,6 @@ struct LoadingViewSimulator: View {
             .pickerStyle(SegmentedPickerStyle())
         }
     }
-    
-    func SegmentedPickerRow(title: String, selection: Binding<ShapeType>) -> some View {
-        HStack {
-            Text(title)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .frame(width: rowTextWidth)
-            
-            Picker("", selection: selection) {
-                ForEach(ShapeType.allCases, id: \.self) { shapeType in
-                    switch shapeType {
-                    case .circle:
-                        Circle()
-                            .fill(.black)
-                            .tag(shapeType)
-                    case .rectangle:
-                        Rectangle()
-                            .fill(.black)
-                            .tag(shapeType)
-                    case .squircle:
-                        Squircle()
-                            .fill(.black)
-                            .tag(shapeType)
-                    }
-                }
-            }
-            .font(.callout)
-            .pickerStyle(SegmentedPickerStyle())
-        }
-    }
-
 }
 
 #Preview {
